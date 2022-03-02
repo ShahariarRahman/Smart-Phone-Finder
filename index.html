@@ -6,33 +6,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Phone Finder</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/2f9de2ca53.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="container bg-gray-400 mx-auto">
-    <header class="bg-gray-200">
-        <h1>Smart Phone Finder!</h1>
+<body class="container bg-gray-200 mx-auto">
+    <header class="bg-gray-200 2xl:pt-4">
+
+        <h1 class="text-center py-12 text-2xl sm:text-3xl xl:text-4xl font-extrabold text-red-500">Smart Phone
+            Finder !
+        </h1>
+
         <div class="flex justify-center">
             <div class="relative">
-                <div class="absolute top-4 left-3">
-                    <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
+                <div class="absolute top-3 left-3">
+                    <i class="fa fa-search text-gray-400 hover:text-gray-600"></i>
                 </div>
-                <input type="text" class="h-14 w-96 pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
-                    placeholder="Search anything...">
-                <div class="absolute top-3 right-2">
-                    <button class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600">Search</button>
+                <input id="search_text" type="text"
+                    class="h-12 w-64 sm:w-96 pl-10 pr-28 rounded-lg focus:shadow focus:outline-none font-medium"
+                    placeholder="Please Search Phone...">
+                <div id="search_btn" class="absolute top-1 right-1">
+                    <button class="h-10 w-20 text-white rounded-lg bg-red-500  hover:bg-red-600">Search</button>
                 </div>
             </div>
         </div>
+
     </header>
     <main>
         <section>
+            <div class="grid grid-cols-3 gap-6 mx-auto mt-24">
+
+
+                <div class="w-96 rounded bg-white grid grid-cols-1 sm:grid-cols-2 py-4 pl-4 gap-1">
+                    <div>
+                        <img width="100" src="images/1.jpg" alt="image">
+                    </div>
+                    <div class="grid grid-rows-2 grid-flow-col gap-8">
+                        <div>
+                            <h3>iPhone 13 mini</h3>
+                            <h4>Apple</h4>
+                        </div>
+                        <button class="h-8 w-28 text-white rounded-lg bg-red-500 hover:bg-red-600">
+                            details</button>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- 
+                <div class="w-full rounded bg-white grid grid-cols-3 p-4 gap-4">
+                    <div>
+                        <img width="100" src="images/1.jpg" alt="image">
+                        <span>iPhone 13 mini</span>
+                    </div>
+                    <div class="col-span-2 text-center">
+                        <div>Apple</div>
+                    </div>
+                </div>
+             -->
         </section>
     </main>
     <footer>
 
     </footer>
+    <script src="js/javaScript.js"></script>
 </body>
 
 </html>
