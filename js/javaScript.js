@@ -51,17 +51,23 @@ const loadDetails = slug => {
 };
 
 const phoneDetails = data => {
-    const { brand, image, mainFeatures, name, others, releaseDate } = data;
-    console.log(brand, image, mainFeatures, name, others, releaseDate);
+    const { brand, image, mainFeatures, name, others } = data;
+    let { releaseDate } = data;
+    console.log(brand, image, mainFeatures, name, others);
+
+    if (releaseDate.length === 0) {
+        releaseDate = 'not found'
+    }
     const phoneDetailsDiv = document.getElementById('phone-details-container');
+    phoneDetailsDiv.textContent = '';
     const div = document.createElement('div');
     div.innerHTML = `
             <div class="w-auto sm:w-4/5 my-16 rounded-2xl bg-white p-5 mx-4 sm:mx-auto  drop-shadow-xl grid grid-cols-1  md:grid-cols-3 gap-0 sm:gap-4">
                 <div class="w-full xl:w-60 mx-auto">
-                    <img src="images/2.jpg" alt="">
-                    <h3 class="font-bold text-xl mt-5"> iPhone 13 mini </h3>
-                    <h4 class="font-semibold mt-1"> Apple </h4>
-                    <h4 class="font-semibold mt-4"> Released 2021, September 24</h4>
+                    <img src="${image}" alt="">
+                    <h3 class="font-bold text-xl mt-5">${name}</h3>
+                    <h4 class="font-semibold mt-1">${brand}</h4>
+                    <h4 class="font-semibold mt-4">${releaseDate}</h4>
                 </div>
 
                 <div class="col-span-2">
