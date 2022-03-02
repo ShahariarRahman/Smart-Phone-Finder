@@ -24,48 +24,58 @@
                     <i class="fa fa-search text-gray-400 hover:text-gray-600"></i>
                 </div>
                 <input id="search_text" type="text"
-                    class="h-12 w-64 sm:w-96 pl-10 pr-28 rounded-lg focus:shadow focus:outline-none font-medium"
+                    class="h-12 w-64 sm:w-96 pl-10 pr-28 rounded-lg drop-shadow-xl focus:shadow-2xl focus:outline-none font-medium"
                     placeholder="Please Search Phone...">
                 <div id="search_btn" class="absolute top-1 right-1">
-                    <button class="h-10 w-20 text-white rounded-lg bg-red-500  hover:bg-red-600">Search</button>
+                    <button class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600">Search</button>
                 </div>
             </div>
         </div>
 
     </header>
     <main>
+        <!-- phone details -->
+        <div
+            class="w-full sm:w-9/12 my-16 rounded-2xl bg-white p-5 mx-auto m-12  drop-shadow-xl grid grid-cols-1 sm:grid-cols-3 gap-0 sm:gap-4">
+            <div class="w-full 2xl:w-52 mx-auto">
+                <img src="images/2.jpg" alt="">
+                <h3 class="font-bold text-xl mt-5">
+                    iPhone 13 mini
+                </h3>
+                <h4 class="font-semibold mt-1">
+                    Apple
+                </h4>
+                <h4 class="font-semibold mt-4">
+                    Released 2021, September 24
+                </h4>
+            </div>
+
+            <div class="col-span-2">
+                <p class="font-bold">Main Features:</p>
+                <p><span class="font-medium">Chip Set: </span>Apple A15 Bionic (5 nm)</p>
+                <p><span class="font-medium">Display </span> 5.4 inches, 71.9 cm2 (~85.1% screen-to-body ratio)</p>
+                <p><span class="font-medium">Display Size: </span>5.4 inches, 71.9 cm2 (~85.1% screen-to-body ratio)</p>
+                <p><span class="font-medium">Memory: </span>128GB 4GB RAM, 256GB 4GB RAM, 512GB 4GB RAM</p>
+                <p><span class="font-medium">Sensors: </span>Face ID, accelerometer, gyro, proximity, compass, barometer
+                </p>
+                <p><span class="font-medium">Storage: </span>128GB/256GB/512GB storage, no card slot</p>
+                <p class="font-bold">Other Features:</p>
+                <p><span class="font-medium">Bluetooth:</span>Bluetooth: 5.0, A2DP, LE</p>
+                <p><span class="font-medium">GPS: </span>Yes, with A-GPS, GLONASS, GALILEO, BDS, QZSS</p>
+                <p><span class="font-medium">NFC: </span>Yes</p>
+                <p><span class="font-medium">Radio: </span> No</p>
+                <p><span class="font-medium">USB: </span> Lightning, USB 2.0</p>
+                <p><span class="font-medium">WLAN: </span> Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</p>
+            </div>
+
+
+        </div>
+        <!-- phones -->
         <section>
-            <div class="w-9/12 grid grid-cols-3 gap-6 mx-auto mt-24">
-
-
-                <div class="w-48 rounded bg-white py-4 pl-4 mx-auto">
-                    <div>
-                        <img width="100" src="images/1.jpg" alt="image">
-                    </div>
-                    <div>
-                        <h3 class="font-medium">iPhone 13 mini</h3>
-                        <h4>Apple</h4>
-                    </div>
-                    <button class="h-8 w-20 mt-3 text-white rounded-lg bg-red-500 hover:bg-red-600">
-                        details</button>
-                </div>
-
-
-
+            <div id="phone-container" class="w-9/12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mx-auto mt-24">
 
 
             </div>
-            <!-- 
-                <div class="w-full rounded bg-white grid grid-cols-3 p-4 gap-4">
-                    <div>
-                        <img width="100" src="images/1.jpg" alt="image">
-                        <span>iPhone 13 mini</span>
-                    </div>
-                    <div class="col-span-2 text-center">
-                        <div>Apple</div>
-                    </div>
-                </div>
-             -->
         </section>
     </main>
     <footer>
