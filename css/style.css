@@ -1,0 +1,14 @@
+/* Default Hide Element */
+#phone-not-found,
+#loading-anination,
+#empty-input
+{
+  display: none;
+};
+
+/* Media Queries  */
+@media only screen and (min-width: 1400px) {
+  #search_text {
+    width: 600px;
+  };
+}
