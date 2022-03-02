@@ -1,3 +1,4 @@
+// Function: Display or not:
 const showMe = (id, show) => {
     const element = document.getElementById(id);
     if (show) {
@@ -8,23 +9,27 @@ const showMe = (id, show) => {
     }
 };
 
+// Function: Returns Element Rest text Content
 const getElement = (id) => {
     const element = document.getElementById(id);
     element.textContent = '';
     return element;
 };
-// const clearFullScreen = () =>{
 
-// };
-// Click Handeler: Search Button
-document.getElementById('search_btn').addEventListener('click', () => {
+// Function: Rest Full Screen:
+const clearFullScreen = () => {
     showMe('empty-input', false);
     showMe('phone-not-found', false);
     getElement('phone-container');
     getElement('phone-details-container');
+};
 
+// Click Handeler: Search Button
+document.getElementById('search_btn').addEventListener('click', () => {
+    clearFullScreen();
     const searchField = document.getElementById('search_text');
     const searchText = searchField.value.toLowerCase();
+
     // If input field empty or not:
     if (searchField.value.length > 0) {
         showMe('loading-anination', true);
@@ -40,8 +45,6 @@ document.getElementById('search_btn').addEventListener('click', () => {
     };
 });
 
-
-
 // If data found or not:
 const dataProcessing = info => {
     if (info.status !== true) {
@@ -49,12 +52,15 @@ const dataProcessing = info => {
         showMe('phone-not-found', true);
     }
     else {
-        displayPhones(info.data);
+        const phones = info.data;
+        displayPhones(phones.splice(0, 20));
     };
 };
+
 // Displaying Searched Phones:
 const displayPhones = phones => {
     const phoneContainerDiv = getElement('phone-container');
+    // Loop for Each Phone:
     phones.forEach(phone => {
         const { brand, image, phone_name, slug } = phone;
         // Adding searched phones in Phone Container with Button 
@@ -78,6 +84,8 @@ const displayPhones = phones => {
 
 // Loading Details Inforamtion Phone:
 const loadDetails = PhoneId => {
+    getElement('phone-details-container');
+    showMe('loading-anination', true);
     const url = `https://openapi.programming-hero.com/api/phone/${PhoneId}`
     fetch(url)
         .then(res => res.json())
@@ -149,6 +157,7 @@ const phoneDetails = phone => {
                     <p><span class="font-medium">USB: </span>${USB}</p>
                     <p><span class="font-medium">WLAN: </span>${WLAN}</p>
                 </div>   
-    `
+    `;
     phoneDetailsContainer.appendChild(div);
+    showMe('loading-anination', false);
 };
