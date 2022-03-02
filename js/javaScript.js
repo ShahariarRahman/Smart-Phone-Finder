@@ -1,9 +1,33 @@
+const showMe = (id, show) => {
+    const element = document.getElementById(id);
+    if (show) {
+        element.style.display = 'block';
+    }
+    else {
+        element.style.display = 'none';
+    }
+};
+
+const getElement = (id) => {
+    const element = document.getElementById(id);
+    element.textContent = '';
+    return element;
+};
+// const clearFullScreen = () =>{
+
+// };
 // Click Handeler: Search Button
 document.getElementById('search_btn').addEventListener('click', () => {
+    showMe('empty-input', false);
+    showMe('phone-not-found', false);
+    getElement('phone-container');
+    getElement('phone-details-container');
+
     const searchField = document.getElementById('search_text');
     const searchText = searchField.value.toLowerCase();
     // If input field empty or not:
     if (searchField.value.length > 0) {
+        showMe('loading-anination', true);
         // Input field isn't empty
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
         searchField.value = '';
@@ -12,8 +36,7 @@ document.getElementById('search_btn').addEventListener('click', () => {
             .then(data => dataProcessing(data));
     }
     else {
-        // Input field is empty 
-        console.log('empty');
+        showMe('empty-input', true);
     };
 });
 
@@ -22,25 +45,22 @@ document.getElementById('search_btn').addEventListener('click', () => {
 // If data found or not:
 const dataProcessing = info => {
     if (info.status !== true) {
-        console.log('not found');
+        showMe('loading-anination', false);
+        showMe('phone-not-found', true);
     }
     else {
-        displayPhones(info.data)
+        displayPhones(info.data);
     };
 };
 // Displaying Searched Phones:
 const displayPhones = phones => {
-    // phones container:
-    const phoneContainerDiv = document.getElementById('phone-container');
-    // clean phone container:
-    phoneContainerDiv.textContent = '';
-
+    const phoneContainerDiv = getElement('phone-container');
     phones.forEach(phone => {
         const { brand, image, phone_name, slug } = phone;
         // Adding searched phones in Phone Container with Button 
         const div = document.createElement('div');
         div.innerHTML = `
-                <div class="w-52 rounded-2xl bg-white p-5 mx-auto text-center drop-shadow-xl">
+                <div class="text-center bg-white drop-shadow-xl rounded-2xl mx-auto p-5 w-52 ">
                     <div class="flex justify-center">
                         <img width="127" src="${image}" alt="image">
                     </div>
@@ -48,10 +68,11 @@ const displayPhones = phones => {
                         <h3 class="font-medium">${phone_name}</h3>
                         <h4>${brand}</h4>
                     </div>
-                    <button onclick="loadDetails('${slug}')" class="h-8 w-36 mt-3 text-white rounded-lg bg-red-500 hover:bg-red-600">Details</button>
+                    <button onclick="loadDetails('${slug}')" class="text-white bg-red-500 hover:bg-red-600 rounded-lg h-8 w-36 mt-3">Details</button>
                 </div>
             `
         phoneContainerDiv.appendChild(div);
+        showMe('loading-anination', false);
     });
 };
 
@@ -93,20 +114,15 @@ const phoneDetails = phone => {
 
     others = checkOthers(others);
 
-    // Destructuring Other Inforamtion and main Features:
+    // Destructuring Other Inforamtion, main Features:
     const { Bluetooth, GPS, NFC, Radio, USB, WLAN } = others;
     const { chipSet, displaySize, memory, sensors, storage } = mainFeatures;
 
-
-    // Phone Details Container:
-    const phoneDetailsContainer = document.getElementById('phone-details-container');
-    // Cleaning Details Container:
-    phoneDetailsContainer.textContent = '';
-
+    const phoneDetailsContainer = getElement('phone-details-container');
     const div = document.createElement('div');
 
     // Adding Taiwind Multiple Classes using Spread Operator:
-    const divClasses = ['w-auto', 'sm:w-4/5', 'my-16', 'rounded-2xl', 'bg-white', 'p-5', 'mx-4', 'sm:mx-auto', 'drop-shadow-xl', 'grid', 'grid-cols-1', 'md:grid-cols-3', 'gap-0', 'sm:gap-4'];
+    const divClasses = ['grid', 'grid-cols-1', 'md:grid-cols-3', 'gap-0', 'sm:gap-4', 'bg-white', 'drop-shadow-xl', 'rounded-2xl', 'p-5', 'mx-4', 'sm:mx-auto', 'my-16', 'w-auto', 'sm:w-4/5'];
     div.classList.add(...divClasses);
 
     // Adding Phone's Details Inforamtion:
@@ -123,9 +139,7 @@ const phoneDetails = phone => {
                     <p><span class="font-medium">Chip Set: </span>${chipSet}</p>
                     <p><span class="font-medium">Display Size: </span>${displaySize}</p>
                     <p><span class="font-medium">Memory: </span>${memory}</p>
-                    <p><span class="font-medium">Sensors: </span>Face ID, accelerometer, gyro, proximity, compass,
-                        barometer
-                    </p>
+                    <p><span class="font-medium">Sensors: </span>${sensors}</p>
                     <p><span class="font-medium">Storage: </span>${storage}</p>
                     <p class="font-bold">Other Features:</p>
                     <p><span class="font-medium">Bluetooth:</span>${Bluetooth}</p>

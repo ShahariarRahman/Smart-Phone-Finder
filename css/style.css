@@ -1,3 +1,10 @@
+#phone-not-found,
+#loading-anination,
+#empty-input
+{
+  display: none;
+};
+
 @media only screen and (min-width: 1400px) {
   #search_text {
     width: 600px;
