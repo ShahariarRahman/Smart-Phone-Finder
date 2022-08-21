@@ -147,7 +147,7 @@ const phoneDetails = phone => {
                     <p><span class="font-medium">Chip Set: </span>${chipSet}</p>
                     <p><span class="font-medium">Display Size: </span>${displaySize}</p>
                     <p><span class="font-medium">Memory: </span>${memory}</p>
-                    <p><span class="font-medium">Sensors: </span>${sensors}</p>
+                    <p><span class="font-medium">Sensors: </span class="w-fit>${sensors}</p>
                     <p><span class="font-medium">Storage: </span>${storage}</p>
                     <p class="font-bold">Other Features:</p>
                     <p><span class="font-medium">Bluetooth:</span>${Bluetooth}</p>
